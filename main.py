@@ -492,7 +492,7 @@ def getMailAddress():
 def sendReportToMail(getMailAddress):
 
     email_user = 'erayreporter@gmail.com'
-    email_password = 'reporter123'
+    email_password = 'alemdefener1899'
     email_send = getMailAddress()
 
     subject = 'Shrinking Algorithms Report'
