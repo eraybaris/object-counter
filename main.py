@@ -15,6 +15,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
+import webbrowser
 
 nccLevialdi = 0
 iterationLevialdi = 0
@@ -75,7 +76,12 @@ def main():
     root.Label4 = tk.Label(root)
     root.Label4.place(relx=0.930, rely=0.620, height=21, width=35)
     root.Label4.configure(background="#d9d9d9",text="ITER: ")
-
+    
+    link = Label(root,text="@baris",fg="blue",cursor="hand2")
+    link.pack()
+    link.bind("<Button-1>", callback)
+    link.place(relx=0.932, rely=0.950, height=21, width=92)
+    
     root.TSeparator1 = ttk.Separator(root)
     root.TSeparator1.place(relx=0.480, rely=0.01, relheight=0.988)
     root.TSeparator1.configure(orient="vertical")
@@ -451,7 +457,7 @@ def createImage():
         y = root.winfo_rooty() + can.winfo_y()+5
         x1 = x + can.winfo_width()-7
         y1 = y + can.winfo_height()-7
-        ImageGrab.grab().crop((x, y, x1, y1)).save("C:/Users/baris/Desktop/studio/sample_images/croppedImage.png")
+        ImageGrab.grab().crop((x, y, x1, y1)).save("croppedImage.jpg","JPEG")
         tkinter.messagebox.showinfo("Info", "Image saved...")
 
     can = tk.Canvas(root, bg='black', height=100, width=100)
@@ -520,5 +526,8 @@ def sendReportToMail(getMailAddress):
 
     tkinter.messagebox.showinfo("Done!","Report successfully sent")
 
+def callback(event):
+    webbrowser.open_new(r"www.archydev.com")
+    
 if __name__ == '__main__':
     main()
